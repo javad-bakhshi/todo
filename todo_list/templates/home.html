@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %} To-Do| home {%endblock%}
+{% block content %}
+
+	{% if all_items %}
+
+		  <table class="table table-bordered">
+				{% for stuf in all_items %}
+					<tr>
+						<td> {{ stuf.item }} </td>
+						<td><center> {{stuf.compeleted}} </center> </td>
+						<td><center> Delete <center></td>
+					</tr>
+
+				{% endfor %}
+		 </table>
+	{%endif %}
+{%endblock %}
