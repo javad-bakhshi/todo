@@ -1,16 +1,39 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %} To-Do| home {%endblock%}
 {% block content %}
+
+{% if messages %}
+ {% for m in messages %}
+	<div class="alert alert-warning" role="alert">
+	<button class="close" data-dismiss="alert">
+		<small><sup>x</sup></small>
+	</button>
+	 {{ m }}
+   </div>
+ {% endfor %}
+
+
+{% endif %}
 
 	{% if all_items %}
 
 		  <table class="table table-bordered">
 				{% for stuf in all_items %}
-					<tr>
-						<td> {{ stuf.item }} </td>
-						<td><center> {{stuf.compeleted}} </center> </td>
-						<td><center> Delete <center></td>
-					</tr>
+					{% if stuf.compeleted %}
+						<tr class="table-secondary">
+							<td class="stiker"> {{ stuf.item }} </td>
+							<td><center> {{stuf.compeleted}} </center> </td>
+							<td><center><a href="{% url 'delete' stuf.id %}"> Delete </a><center></td>
+						</tr>
+					{% else %}
+						<tr>
+							<td> {{ stuf.item }} </td>
+							<td><center> {{stuf.compeleted}} </center> </td>
+							<td><center><a href="{% url 'delete' stuf.id %}"> Delete </a><center></td>
+						</tr>
+
+					{% endif %}
 
 				{% endfor %}
 		 </table>
