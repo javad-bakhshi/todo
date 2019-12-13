@@ -22,14 +22,14 @@
 				{% for stuf in all_items %}
 					{% if stuf.compeleted %}
 						<tr class="table-secondary">
-							<td class="stiker"> {{ stuf.item }} </td>
-							<td><center> {{stuf.compeleted}} </center> </td>
+							<td class="stiker"><a href="{% url 'edit' stuf.id %}" > {{ stuf.item }} </a></td>
+							<td><center><a href="{% url 'uncross' stuf.id %}" >Uncross </a></center> </td>
 							<td><center><a href="{% url 'delete' stuf.id %}"> Delete </a><center></td>
 						</tr>
 					{% else %}
 						<tr>
-							<td> {{ stuf.item }} </td>
-							<td><center> {{stuf.compeleted}} </center> </td>
+							<td><a href="{% url 'edit' stuf.id %}" > {{ stuf.item }} </a></td>
+							<td><center><a href="{% url 'cross_off' stuf.id %}" >Cross OFF </a></center> </td>
 							<td><center><a href="{% url 'delete' stuf.id %}"> Delete </a><center></td>
 						</tr>
 
